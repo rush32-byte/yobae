@@ -1,326 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Little Confession</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umairah Balqis | Portfolio</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: "Poppins", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 35%),
-        linear-gradient(135deg, #ff8fab, #ffc2d1, #ffe5ec);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow-x: hidden;
-      overflow-y: auto;
-      padding: 40px 20px 80px;
-      color: #3a0ca3;
-    }
-
-    .hearts {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .heart {
-      position: absolute;
-      bottom: -30px;
-      color: rgba(255, 255, 255, 0.75);
-      animation: floatUp linear infinite;
-      text-shadow: 0 8px 20px rgba(255, 0, 98, 0.25);
-    }
-
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 1;
-      }
-
-      to {
-        transform: translateY(-115vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .card {
-      width: min(92vw, 520px);
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      border-radius: 30px;
-      padding: 38px 32px;
-      text-align: center;
-      box-shadow: 0 30px 80px rgba(144, 12, 63, 0.28);
-      position: relative;
-      z-index: 2;
-      animation: popIn 0.9s ease both;
-      margin: 20px 0 70px;
-    }
-
-    @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .badge {
-      display: inline-block;
-      background: #fff0f3;
-      color: #c9184a;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      box-shadow: inset 0 0 0 1px rgba(201, 24, 74, 0.1);
-    }
-
-    h1 {
-      font-size: clamp(34px, 6vw, 52px);
-      line-height: 1.05;
-      color: #c9184a;
-      margin-bottom: 16px;
-    }
-
-    .intro {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #5a189a;
-      margin-bottom: 28px;
-    }
-
-    .main-heart {
-      font-size: 70px;
-      animation: heartbeat 1.3s infinite;
-      margin-bottom: 18px;
-      filter: drop-shadow(0 10px 22px rgba(201, 24, 74, 0.35));
-    }
-
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
-      }
-
-      25% {
-        transform: scale(1.15);
-      }
-
-      45% {
-        transform: scale(0.96);
-      }
-
-      65% {
-        transform: scale(1.12);
-      }
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-      padding: 14px 24px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 800;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-    }
-
-    .yes-btn {
-      background: linear-gradient(135deg, #ff4d6d, #c9184a);
-      color: white;
-      box-shadow: 0 12px 25px rgba(201, 24, 74, 0.18);
-    }
-
-    .no-btn {
-      background: #fff;
-      color: #c9184a;
-      border: 1px solid rgba(201, 24, 74, 0.18);
-      position: relative;
-    }
-
-    .message {
-      margin-top: 28px;
-      padding: 22px;
-      border-radius: 22px;
-      background: #fff0f3;
-      color: #590d22;
-      line-height: 1.8;
-      font-size: 17px;
-      display: none;
-      animation: reveal 0.7s ease both;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .signature {
-      margin-top: 16px;
-      font-weight: 800;
-      color: #c9184a;
-    }
-
-    .footer-note {
-      margin-top: 22px;
-      font-size: 13px;
-      color: rgba(90, 24, 154, 0.75);
-    }
-
-    @media (max-width: 480px) {
-      body {
-        align-items: flex-start;
-        padding: 24px 14px 80px;
-      }
-
-      .card {
-        padding: 32px 22px;
-        margin: 10px 0 80px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      .message {
-        font-size: 16px;
-        line-height: 1.7;
-      }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="hearts" id="hearts"></div>
 
-  <main class="card">
-    <div class="badge">Someone has something to say...</div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Umairah Balqis</div>
 
-    <div class="main-heart">💗</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Work Highlights</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h1>HI UMAIRAH BALQIS.</h1>
+    <!-- Home -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="small-title">Hello, I am</p>
+            <h1>Umairah Balqis</h1>
+            <h2>Food Technology Student & Head of R&D Team</h2>
 
-    <p class="intro">
-      I made this little page because some feelings are too special to keep hidden.
-      So here it is, simple and honest.
+            <p class="hero-description">
+                A Food Technology student from Universiti Sultan Zainal Abidin (UniSZA),
+                currently working at Mamag Marketing Sdn. Bhd. as Head of the R&D team.
+                Passionate about food innovation, product development, quality improvement,
+                and creating practical food solutions for the market.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#experience" class="btn primary-btn">View Experience</a>
+                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-card">
+            <p>
+                I am currently pursuing a degree in Food Technology at Universiti Sultan Zainal
+                Abidin (UniSZA). My academic background has developed my understanding of food
+                science, food processing, quality control, product formulation, and food safety.
+            </p>
+
+            <p>
+                Alongside my studies, I am working with Mamag Marketing Sdn. Bhd. as the Head of
+                the R&D team, where I am involved in research and development activities, product
+                improvement, formulation testing, and supporting the development of food products
+                that meet consumer needs and business goals.
+            </p>
+
+            <div class="about-info">
+                <p><strong>Field:</strong> Food Technology</p>
+                <p><strong>University:</strong> Universiti Sultan Zainal Abidin (UniSZA)</p>
+                <p><strong>Current Role:</strong> Head of R&D Team</p>
+                <p><strong>Company:</strong> Mamag Marketing Sdn. Bhd.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section light-section">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <h3>Head of R&D Team</h3>
+                    <span>Current</span>
+                </div>
+
+                <h4>Mamag Marketing Sdn. Bhd.</h4>
+
+                <ul>
+                    <li>Lead research and development activities for food product improvement and innovation.</li>
+                    <li>Assist in product formulation, testing, and refinement based on quality and market needs.</li>
+                    <li>Coordinate with team members to plan, evaluate, and improve product development processes.</li>
+                    <li>Support food quality, consistency, and practical product development for business operations.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <h3>Food Technology Student</h3>
+                    <span>Degree Programme</span>
+                </div>
+
+                <h4>Universiti Sultan Zainal Abidin (UniSZA)</h4>
+
+                <ul>
+                    <li>Studying food science, food processing, food safety, and product development.</li>
+                    <li>Developing knowledge in quality control, ingredient functionality, and food innovation.</li>
+                    <li>Applying academic learning to real-world food industry practices.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="section">
+        <h2 class="section-title">Areas of Expertise</h2>
+
+        <div class="skills-grid">
+            <div class="skill-card">Food Product Development</div>
+            <div class="skill-card">Research & Development</div>
+            <div class="skill-card">Food Formulation</div>
+            <div class="skill-card">Quality Improvement</div>
+            <div class="skill-card">Food Processing</div>
+            <div class="skill-card">Food Safety Awareness</div>
+            <div class="skill-card">Product Testing</div>
+            <div class="skill-card">Team Coordination</div>
+            <div class="skill-card">Problem Solving</div>
+        </div>
+    </section>
+
+    <!-- Work Highlights -->
+    <section id="projects" class="section light-section">
+        <h2 class="section-title">Work Highlights</h2>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Food Product R&D</h3>
+                <p>
+                    Involved in research and development activities to improve food products,
+                    explore product ideas, and support formulation testing for better quality
+                    and consumer acceptance.
+                </p>
+                <span>R&D · Product Innovation · Food Technology</span>
+            </div>
+
+            <div class="project-card">
+                <h3>Product Formulation Support</h3>
+                <p>
+                    Assisted in evaluating ingredients, testing formulations, and improving
+                    product consistency based on business requirements and food quality standards.
+                </p>
+                <span>Formulation · Testing · Quality Improvement</span>
+            </div>
+
+            <div class="project-card">
+                <h3>Team Leadership in R&D</h3>
+                <p>
+                    Supports and coordinates R&D team activities to ensure product development
+                    tasks are carried out effectively and aligned with company goals.
+                </p>
+                <span>Leadership · Coordination · R&D Team</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="timeline">
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <h3>Degree in Food Technology</h3>
+                    <span>Current</span>
+                </div>
+
+                <h4>Universiti Sultan Zainal Abidin (UniSZA)</h4>
+
+                <p>
+                    Focused on food science, food processing, food safety, quality control,
+                    and food product development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+<section id="products" class="section">
+    <h2 class="section-title">Product Gallery</h2>
+
+    <p class="section-subtitle">
+        Selected food products and R&D creations developed or supported through product formulation,
+        testing, and improvement activities.
     </p>
 
-    <div class="buttons">
-      <button class="yes-btn" onclick="showConfession()">Open My Heart</button>
-      <button class="no-btn" id="noBtn">Not Yet</button>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="images/taufufa.jpg" alt="Product 1">
+            <div class="product-content">
+                <h3>Serbuk Taufufa Segera</h3>
+                <p>
+                    A food product created through formulation testing, ingredient adjustment,
+                    and quality improvement.
+                </p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/tomsaab.jpg" alt="Product 2">
+            <div class="product-content">
+                <h3>Serbuk Tomsaab</h3>
+                <p>
+                    A product sample developed to support innovation, consumer preference,
+                    and business product improvement.
+                </p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product3.jpg" alt="Product 3">
+            <div class="product-content">
+                <h3>Product Development 3</h3>
+                <p>
+                    A product created as part of R&D work involving testing, refinement,
+                    and product presentation.
+                </p>
+            </div>
+        </div>
+
     </div>
+</section>
 
-    <div class="message" id="message">
-      I like you more than I planned to.<br />
-      Your smile, your kindness, and the way you make ordinary moments feel special
-      mean so much to me.<br /><br />
+    <!-- Contact -->
+    <section id="contact" class="section light-section">
+        <h2 class="section-title">Contact</h2>
 
-      I do not know exactly where this will lead, but I know one thing clearly:
-      <strong>I want to know you more, care for you more, and be closer to you.</strong>
+        <div class="contact-card">
+            <p>Interested to connect or collaborate?</p>
 
-      <div class="signature">Will you give me a chance? 💌</div>
-    </div>
+            <p>
+                Email:
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </p>
 
-    <div class="footer-note">
-      Made with courage, honesty, and a lot of butterflies.
-    </div>
-  </main>
+            <p>
+                Phone:
+                <a href="#">Add phone number here</a>
+            </p>
 
-  <script>
-    const heartsContainer = document.getElementById("hearts");
-    const noBtn = document.getElementById("noBtn");
+            <p>
+                LinkedIn:
+                <a href="#">Add LinkedIn link here</a>
+            </p>
+        </div>
+    </section>
 
-    function createHeart() {
-      const heart = document.createElement("span");
-      heart.className = "heart";
-      heart.textContent = ["♡", "♥", "💖", "💕", "💘"][Math.floor(Math.random() * 5)];
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 22 + 14 + "px";
-      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-      heart.style.animationDelay = Math.random() * 2 + "s";
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© <span id="year"></span> Umairah Balqis. All rights reserved.</p>
+    </footer>
 
-      heartsContainer.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 9000);
-    }
-
-    setInterval(createHeart, 350);
-
-    function showConfession() {
-      const message = document.getElementById("message");
-      const yesBtn = document.querySelector(".yes-btn");
-
-      message.style.display = "block";
-      yesBtn.textContent = "I meant every word ❤️";
-
-      setTimeout(() => {
-        message.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 200);
-    }
-
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 120 - 60;
-      const y = Math.random() * 80 - 40;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-
-    noBtn.addEventListener("click", () => {
-      noBtn.textContent = "Are you sure? 🥺";
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
